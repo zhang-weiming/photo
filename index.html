@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Hello World!</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <h1>选择图片</h1> <button id="selectImg">选择图片</button>
+  <div>
+      <img id='imgBox' src="" alt="目标图片">
+  </div>
+
+  <button id="new-window">弹出子窗口</button>
+
+  <!-- You can also require other files to run in this process -->
+  <script>
+    const {ipcRenderer} = require('electron');
+    var btnSelectImg = document.getElementById('selectImg');
+    btnSelectImg.click = openDialog;
+
+
+    function openDialog() {
+        console.log('click');
+        ipcRenderer.send('openDialog');
+    }
+  </script>
+  <script src="./renderer.js"></script>
+</body>
+
 </html>
