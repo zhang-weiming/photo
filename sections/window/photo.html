@@ -20,31 +20,34 @@
       font-size: 40px;
     }
 
-    h2 {
-      padding: 0;
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    #tool {
+      z-index: 1;
+      display: none;
+      top: 15px;
+      left: 15px;
+      height: 50px;
     }
 
-    #close {
-      color: white;
-      opacity: 0.7;
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
-      text-decoration: none;
+    #main {
+      z-index: 0;
+      text-align: top left;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
     }
   </style>
 </head>
 
-<body style="-webkit-app-region: drag;">
+<body style="background-size: cover; ">
   <!-- <h1>hello</h1> -->
-  <div id="main"></div>
+  <!-- <div >
+    <embed id="tool" src="assets/delete.svg" type="image/svg+xml" />
+  </div> -->
+  <div id="main">
+    <embed id="tool" src="assets/delete.svg" type="image/svg+xml" />
+  </div>
 
   <script src="photo.js"></script>
 </body>

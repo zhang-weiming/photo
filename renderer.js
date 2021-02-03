@@ -22,6 +22,6 @@ newWindowBtn.addEventListener('click', (event) => {
     win.on('close', () => { win = null })
     win.loadURL(modalPath)
     win.show()
-    // // Open the DevTools.
-    // win.webContents.openDevTools()
+    // Open the DevTools.
+    win.webContents.openDevTools()
 })
