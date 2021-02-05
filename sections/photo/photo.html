@@ -16,21 +16,22 @@
       font-family: system, -apple-system, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
       color: #fff;
       background-color: #8aba87;
-      text-align: center;
+      text-align: top;
       font-size: 40px;
     }
 
-    #tool {
-      z-index: 1;
-      display: none;
-      top: 15px;
-      left: 15px;
+    #tools {
+      position: absolute;
+      z-index: 10;
+      width: 100%;
       height: 50px;
+      text-align: center;
     }
 
-    #main {
-      z-index: 0;
-      text-align: top left;
+    .tool {
+      display: none;
+      height: 30px;
+      pointer-events: none;
     }
 
     ::-webkit-scrollbar {
@@ -46,7 +47,11 @@
     <embed id="tool" src="assets/delete.svg" type="image/svg+xml" />
   </div> -->
   <div id="main">
-    <embed id="tool" src="assets/delete.svg" type="image/svg+xml" />
+    <div id="tools">
+      <a id="a-delete" href="javascript:window.close()">
+        <embed id="delete" class="tool" src="../../assets/delete.svg" type="image/svg+xml" />
+      </a>
+    </div>
   </div>
 
   <script src="photo.js"></script>

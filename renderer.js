@@ -10,7 +10,7 @@ const path = require('path')
 const newWindowBtn = document.getElementById('new-window')
 
 newWindowBtn.addEventListener('click', (event) => {
-    const modalPath = path.join('file://', __dirname, 'sections/window/photo.html')
+    const modalPath = path.join('file://', __dirname, 'sections/photo/photo.html')
     let win = new BrowserWindow({
         width: 600, height: 400,
         frame: false,

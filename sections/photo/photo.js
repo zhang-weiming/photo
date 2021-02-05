@@ -73,36 +73,11 @@ function resizeWindow() {
     mainDiv.style.height = newHeight + 'px';
 }
 
-document.body.onclick = function() {
-    let toolIcon = document.getElementById('tool');
-    if (toolIcon.style.display == "none") {
-        toolIcon.style.display = "inline";
-    }
-    else {
-        toolIcon.style.display = "none";
-    }
-}
-
-// window.addEventListener("DOMContentLoaded", OnLoadFinish);
-// function OnLoadFinish(path) {
-//     let realSize = GetRealSize(path);
-//     // alert(realSize);
-//     console.log("realSize", realSize);
-//     // window.resizeTo(realSize.width, realSize.height); 
-// }
-// function GetRealSize(path) {
-//     //获取 DOM，之后便可以获取其宽高
-//     //注意，如果宽高是 100px 这种字符串，需要手动将其搞成 Number。
-//     let img = new Image();
-//     img.src = path;
-//     let w = img.width;
-//     let h = img.height;
-//     if (typeof (w) == "string") {
-//         w = parseInt(w.split("px")[0]);
-//         h = parseInt(h.split("px")[0]);
-//     }
-//     return {
-//         width: w,
-//         height: h
-//     }
-// }
+let toolArea = document.getElementById('tools');
+let deleteIcon = document.getElementById('delete');
+toolArea.onmouseover = function() {
+    deleteIcon.style.display = "inline";
+};
+toolArea.onmouseout = function() {
+    deleteIcon.style.display = "none";
+};
