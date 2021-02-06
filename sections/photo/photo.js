@@ -2,6 +2,7 @@
 const { ipcRenderer } = require('electron');
 const remote = require("electron").remote;
 const dialog = remote.dialog;
+const path = require('path')
 
 // let btnSelectImg = document.getElementById('selectImg');
 // let imgBox = document.getElementById('img-box');
@@ -19,19 +20,20 @@ function openDialog() {
             { name: 'Images', extensions: ['jpg', 'jpeg', 'png', 'gif'] }
         ]
     })
-    if (typeof result === "object") {
-        // console.log("Selected file paths:")
-        // console.log(result)
-        // imgBox.src = result[0];
-        document.body.style.backgroundImage = "url(" + result[0] + ")";
-    }
 
-    // 根据图片大小，设置窗口大小
-    setWindowSize(result[0]);
-    window.onresize = resizeWindow;
-    // imgBox.onload = function() {
-    //     OnLoadFinish();
-    // };
+    if (null == result || 0 == result.length)
+        window.close();
+    if (typeof result === "object") {
+        const imgPath = result[0].replace(/\\/g,"/");
+        document.body.style.backgroundImage = "url(" + imgPath + ")";
+
+        // 根据图片大小，设置窗口大小
+        setWindowSize(imgPath);
+        window.onresize = resizeWindow;
+        // imgBox.onload = function() {
+        //     OnLoadFinish();
+        // };
+    }
 }
 
 openDialog();
