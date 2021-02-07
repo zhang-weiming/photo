@@ -44,15 +44,36 @@ function setWindowSize(imgPath) {
     img.src = imgPath;
     img.onload = function() {
         // alert(img.width + ', ' + img.height);
-        window.resizeTo(img.width, img.height); 
+        let size = regularSize(img.width, img.height);
+
+        window.resizeTo(size.w, size.h); 
         let mainDiv = document.getElementById("main");
-        mainDiv.style.width = img.width + 'px';
-        mainDiv.style.height = img.height + 'px';
+        mainDiv.style.width = size.w + 'px';
+        mainDiv.style.height = size.h + 'px';
 
         imgSizeRadio = window.outerWidth / window.outerHeight;
         originalSize.width = window.outerWidth;
         originalSize.height = window.outerHeight;
     }
+}
+
+function regularSize(imgWidth, imgHeight) {
+    let width = imgWidth;
+    let height = imgHeight;
+    let radio = width / height;
+
+    width = 400;
+    height = width / radio;
+
+    if (height > 600) {
+        height = 600;
+        width = height * radio;
+    }
+
+    return {
+        w: width, 
+        h: height,
+    };
 }
 
 function resizeWindow() {
